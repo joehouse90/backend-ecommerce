@@ -1,0 +1,46 @@
+{
+  "info": {
+    "name": "Backend Ecommerce - Entrega 1",
+    "_postman_id": "00000000-0000-0000-0000-000000000001",
+    "description": "Endpoints de productos y carritos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    { "name": "Health", "request": { "method": "GET", "url": "http://localhost:8080/health" } },
+    { "name": "Products - List", "request": { "method": "GET", "url": "http://localhost:8080/api/products" } },
+    { "name": "Products - Get by ID", "request": { "method": "GET", "url": "http://localhost:8080/api/products/1" } },
+    {
+      "name": "Products - Create",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "http://localhost:8080/api/products",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Bombilla premium\",\n  \"description\": \"Filtro desmontable\",\n  \"code\": \"BOM-PRE-999\",\n  \"price\": 2500,\n  \"status\": true,\n  \"stock\": 30,\n  \"category\": \"accesorios\",\n  \"thumbnails\": [\"/img/bombilla_premium.jpg\"]\n}"
+        }
+      }
+    },
+    {
+      "name": "Products - Update (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "http://localhost:8080/api/products/1",
+        "body": { "mode": "raw", "raw": "{ \"price\": 3600, \"stock\": 18 }" }
+      }
+    },
+    { "name": "Products - Delete", "request": { "method": "DELETE", "url": "http://localhost:8080/api/products/9" } },
+    { "name": "Carts - Create", "request": { "method": "POST", "url": "http://localhost:8080/api/carts" } },
+    { "name": "Carts - Get products", "request": { "method": "GET", "url": "http://localhost:8080/api/carts/1" } },
+    {
+      "name": "Carts - Add product",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "http://localhost:8080/api/carts/1/product/2",
+        "body": { "mode": "raw", "raw": "{ \"quantity\": 1 }" }
+      }
+    }
+  ]
+}

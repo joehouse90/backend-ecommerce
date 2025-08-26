@@ -1,0 +1,121 @@
+[
+  {
+    "id": 1,
+    "title": "Mate de calabaza premium",
+    "description": "Mate artesanal de calabaza con virola de alpaca, curado y listo para usar.",
+    "code": "MAT-CAL-001",
+    "price": 3500,
+    "status": true,
+    "stock": 15,
+    "category": "mates",
+    "thumbnails": [
+      "/img/mate_calabaza_1.jpg",
+      "/img/mate_calabaza_2.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Mate de acero inoxidable",
+    "description": "Mate de acero inoxidable doble pared, mantiene la temperatura por más tiempo.",
+    "code": "MAT-ACE-002",
+    "price": 4200,
+    "status": true,
+    "stock": 20,
+    "category": "mates",
+    "thumbnails": [
+      "/img/mate_acero_1.jpg",
+      "/img/mate_acero_2.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Mate de cerámica esmaltada",
+    "description": "Mate de cerámica con diseño esmaltado, fácil de limpiar y resistente.",
+    "code": "MAT-CER-003",
+    "price": 2800,
+    "status": true,
+    "stock": 10,
+    "category": "mates",
+    "thumbnails": [
+      "/img/mate_ceramica_1.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Yerba mate tradicional",
+    "description": "Yerba mate elaborada con palo, estacionada naturalmente 12 meses.",
+    "code": "YER-TRA-001",
+    "price": 1500,
+    "status": true,
+    "stock": 50,
+    "category": "yerbas",
+    "thumbnails": [
+      "/img/yerba_tradicional.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Yerba mate saborizada con menta y limón",
+    "description": "Mezcla de yerba mate con hierbas naturales y toque de limón.",
+    "code": "YER-MEN-002",
+    "price": 1700,
+    "status": true,
+    "stock": 35,
+    "category": "yerbas",
+    "thumbnails": [
+      "/img/yerba_menta_limon.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Yerba mate orgánica premium",
+    "description": "Yerba certificada orgánica, sin agroquímicos, molienda equilibrada.",
+    "code": "YER-ORG-003",
+    "price": 2000,
+    "status": true,
+    "stock": 25,
+    "category": "yerbas",
+    "thumbnails": [
+      "/img/yerba_organica.jpg"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Bombilla de acero inoxidable",
+    "description": "Bombilla de acero con filtro desmontable, fácil de limpiar.",
+    "code": "BOM-ACE-001",
+    "price": 1200,
+    "status": true,
+    "stock": 40,
+    "category": "accesorios",
+    "thumbnails": [
+      "/img/bombilla_acero.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Termo de acero 1 litro",
+    "description": "Termo de acero inoxidable con pico vertedor, capacidad 1 litro.",
+    "code": "TER-ACE-001",
+    "price": 6500,
+    "status": true,
+    "stock": 18,
+    "category": "accesorios",
+    "thumbnails": [
+      "/img/termo_acero.jpg"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Kit de limpieza para mate",
+    "description": "Set con cepillo y herramientas para limpiar mates y bombillas.",
+    "code": "KIT-LIM-001",
+    "price": 900,
+    "status": true,
+    "stock": 22,
+    "category": "accesorios",
+    "thumbnails": [
+      "/img/kit_limpieza.jpg"
+    ]
+  }
+]
