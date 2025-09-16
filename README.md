@@ -1,177 +1,74 @@
-# 🛒 Backend E-commerce – Entrega 1
+# Backend Ecommerce - Entrega Nº2
 
-API RESTful desarrollada en **Node.js + Express**, que gestiona **productos** y **carritos de compra**.  
-La persistencia se realiza mediante archivos JSON (`products.json` y `carts.json`).
-
----
-
-## ⚙️ Cómo correr el proyecto
-
-```bash
-# Instalar dependencias
-npm install
-
-# Levantar el servidor en modo desarrollo (con nodemon)
-npm run dev
-```
-
-El servidor queda disponible en:  
-👉 http://localhost:8080
+Proyecto desarrollado como parte del curso **Backend (Coderhouse)**.  
+Esta entrega implementa un servidor con **Express**, **Handlebars** y **WebSockets** para gestionar productos en tiempo real.
 
 ---
 
-## 📂 Estructura de carpetas
+## 🚀 Características
+- Servidor con **Express** y **Nodemon**.
+- Motor de plantillas **Handlebars** para vistas dinámicas.
+- Persistencia de productos en archivo `data/products.json`.
+- Vista **Home** (`/`) que muestra la lista de productos cargados.
+- Vista **RealTimeProducts** (`/realtimeproducts`) que permite:
+  - Crear nuevos productos en vivo.
+  - Eliminar productos en vivo.
+- Actualización automática de la lista gracias a **Socket.IO**.
+- Carpeta `public/` para archivos estáticos (CSS y JS).
+- Visualización inmediata de productos recién creados en la vista realtime.
 
-```
+---
+
+## 📂 Estructura del proyecto
 backend-ecommerce/
 ├── data/
-│   ├── carts.json
 │   └── products.json
 ├── src/
-│   ├── app.js
-│   ├── managers/
-│   │   ├── CartManager.js
-│   │   └── ProductManager.js
-│   ├── routes/
-│   │   ├── carts.router.js
-│   │   └── products.router.js
-│   └── utils/
-│       └── id.js
-├── .gitignore
+│   ├── managers/          # Lógica de acceso a datos (ProductManagerFS)
+│   ├── public/            # Archivos estáticos (css, js)
+│   │   ├── css/
+│   │   └── js/realtime.js
+│   ├── routes/            # Routers (products, carts, views)
+│   ├── views/             # Vistas Handlebars
+│   │   ├── layouts/main.handlebars
+│   │   ├── home.handlebars
+│   │   └── realTimeProducts.handlebars
+│   └── app.js             # Configuración principal del servidor
 ├── package.json
-├── package-lock.json
 └── README.md
-```
 
 ---
 
-## 🔗 Endpoints
-
-### 📦 Products
-
-| Método | Endpoint              | Descripción                        |
-|--------|------------------------|------------------------------------|
-| GET    | /api/products          | Lista todos los productos          |
-| GET    | /api/products/:pid     | Obtiene un producto por ID         |
-| POST   | /api/products          | Crea un nuevo producto             |
-| PUT    | /api/products/:pid     | Actualiza un producto existente    |
-| DELETE | /api/products/:pid     | Elimina un producto                |
-
-### 🛒 Carts
-
-| Método | Endpoint                        | Descripción                                      |
-|--------|----------------------------------|--------------------------------------------------|
-| POST   | /api/carts                       | Crea un nuevo carrito                            |
-| GET    | /api/carts/:cid                  | Lista los productos de un carrito                |
-| POST   | /api/carts/:cid/product/:pid     | Agrega un producto al carrito (o incrementa qty) |
+## ⚙️ Instalación
+1. Clonar el repositorio o descargarlo en tu PC.
+2. Instalar dependencias:
+   npm install
+3. Levantar el servidor en modo desarrollo:
+   npm run dev
 
 ---
 
-## 📌 Ejemplo de requests
-
-### 🔹 Crear producto
-
-**Request**
-
-```http
-POST /api/products
-Content-Type: application/json
-```
-
-**Body**
-```json
-{
-  "title": "Mate de vidrio premium",
-  "description": "Mate de vidrio forrado en cuero, fácil de limpiar",
-  "code": "MAT-VID-010",
-  "price": 2800,
-  "status": true,
-  "stock": 12,
-  "category": "mates",
-  "thumbnails": ["/img/mate_vidrio.jpg"]
-}
-```
-
-**Response**
-```json
-{
-  "id": 10,
-  "title": "Mate de vidrio premium",
-  "price": 2800,
-  "stock": 12,
-  "category": "mates"
-}
-```
+## 🌐 Rutas disponibles
+- `/` → Vista **Home** con la lista de productos.
+- `/realtimeproducts` → Vista con productos en tiempo real (crear/eliminar).
+- `/api/products` → API REST para productos (**GET, POST, DELETE**).
+- `/api/carts` → API REST básica de carritos.
 
 ---
 
-### 🔹 Crear carrito
-
-**Request**
-```http
-POST /api/carts
-```
-
-**Response**
-```json
-{
-  "id": 3,
-  "products": []
-}
-```
+## ✅ Requisitos cumplidos (Entrega 2)
+- Implementación de **Express** y **Vistas**.
+- Configuración de **WebSockets (Socket.IO)**.
+- Vista `home.handlebars` con lista estática de productos.
+- Vista `realTimeProducts.handlebars` con lista dinámica.
+- Formularios para crear y eliminar productos.
+- Actualización automática sin recargar página.
+- Persistencia de productos en archivo **JSON**.
 
 ---
 
-### 🔹 Agregar producto al carrito
+## 👨‍💻 Autor
+Joel Simoes Daniel
 
-**Request**
-```http
-POST /api/carts/3/product/2
-Content-Type: application/json
-```
 
-**Body**
-```json
-{ "quantity": 1 }
-```
 
-**Response**
-```json
-{
-  "id": 3,
-  "products": [
-    { "product": "2", "quantity": 1 }
-  ]
-}
-```
-
----
-
-## 🧪 Cheatsheet con cURL
-
-```bash
-# Obtener todos los productos
-curl -X GET http://localhost:8080/api/products
-
-# Crear un nuevo producto
-curl -X POST http://localhost:8080/api/products   -H "Content-Type: application/json"   -d '{"title":"Mate de vidrio premium","price":2800,"stock":12,"category":"mates"}'
-
-# Crear carrito
-curl -X POST http://localhost:8080/api/carts
-
-# Agregar producto al carrito
-curl -X POST http://localhost:8080/api/carts/1/product/2 -H "Content-Type: application/json" -d '{"quantity":1}'
-```
-
----
-
-## 📦 Dependencias principales
-
-- `express`
-- `nodemon` (dev)
-
----
-
-## ✨ Autor
-
-**Joel Simoes Daniel** – Entrega 1 · Curso Backend Coderhouse
