@@ -20,6 +20,7 @@ Esta entrega implementa un servidor con **Express**, **Handlebars** y **WebSocke
 ---
 
 ## 📂 Estructura del proyecto
+```plaintext
 backend-ecommerce/
 ├── data/
 │   └── products.json
@@ -36,6 +37,7 @@ backend-ecommerce/
 │   └── app.js                 # Configuración principal del servidor
 ├── package.json
 └── README.md
+
 
 
 ---
