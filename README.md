@@ -22,20 +22,21 @@ Esta entrega implementa un servidor con **Express**, **Handlebars** y **WebSocke
 ## 📂 Estructura del proyecto
 backend-ecommerce/
 ├── data/
-│ └── products.json
+│   └── products.json
 ├── src/
-│ ├── managers/ # Lógica de acceso a datos (ProductManagerFS)
-│ ├── public/ # Archivos estáticos (css, js)
-│ │ ├── css/
-│ │ └── js/realtime.js
-│ ├── routes/ # Routers (products, carts, views)
-│ ├── views/ # Vistas Handlebars
-│ │ ├── layouts/main.handlebars
-│ │ ├── home.handlebars
-│ │ └── realTimeProducts.handlebars
-│ └── app.js # Configuración principal del servidor
+│   ├── managers/              # Lógica de acceso a datos (ProductManagerFS)
+│   ├── public/                # Archivos estáticos (css, js)
+│   │   ├── css/
+│   │   └── js/realtime.js
+│   ├── routes/                # Routers (products, carts, views)
+│   ├── views/                 # Vistas Handlebars
+│   │   ├── layouts/main.handlebars
+│   │   ├── home.handlebars
+│   │   └── realTimeProducts.handlebars
+│   └── app.js                 # Configuración principal del servidor
 ├── package.json
 └── README.md
+
 
 ---
 
