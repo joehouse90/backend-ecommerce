@@ -117,5 +117,16 @@
     "thumbnails": [
       "/img/kit_limpieza.jpg"
     ]
+  },
+  {
+    "id": 11,
+    "title": "Yerba orgnica",
+    "description": "Orgánica",
+    "code": "TST-001",
+    "price": 520,
+    "status": true,
+    "stock": 1,
+    "category": "test",
+    "thumbnails": []
   }
 ]

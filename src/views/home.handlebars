@@ -1,0 +1,19 @@
+{{!< layouts/main}}
+
+<section>
+  <h2>Listado de productos (estático)</h2>
+
+  <ul id="productsList" class="list">
+    {{#each products}}
+      <li class="card" data-id="{{this.id}}">
+        <b>{{this.title}}</b>
+        <div>Precio: ${{this.price}}</div>
+        <div>Categoría: {{this.category}}</div>
+        <div>Stock: {{this.stock}}</div>
+        <small>ID: {{this.id}} · Code: {{this.code}}</small>
+      </li>
+    {{/each}}
+  </ul>
+</section>
+
+</section>
