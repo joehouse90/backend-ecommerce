@@ -1,16 +1,133 @@
-:root { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-body { margin: 0; background: #0f0f10; color: #f2f2f2; }
-a { color: #8ecbff; text-decoration: none; }
-.container { max-width: 900px; margin: 0 auto; padding: 16px; }
-.nav a { margin-right: 12px; }
-.footer { opacity: .7; }
+:root { 
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; 
+}
 
-.list { list-style: none; padding: 0; display: grid; gap: 12px; }
-.card { background: #1a1b1e; border: 1px solid #2a2b30; padding: 12px; border-radius: 12px; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-form input, form button, form label { display: block; width: 100%; margin-bottom: 8px; }
-input { padding: 10px; border-radius: 8px; border: 1px solid #2a2b30; background: #111216; color: #fff; }
-button { padding: 10px 14px; border: 0; border-radius: 10px; background: #3a86ff; color: #fff; cursor: pointer; }
+body { 
+  margin: 0; 
+  background: #0f0f10; 
+  color: #f2f2f2; 
+}
+
+a { 
+  color: #8ecbff; 
+  text-decoration: none; 
+}
+
+.container { 
+  max-width: 1100px; 
+  margin: 0 auto; 
+  padding: 16px; 
+}
+
+.nav a { 
+  margin-right: 12px; 
+}
+
+.footer { 
+  opacity: .7; 
+}
+
+/* 🔹 Tarjetas */
+.card { 
+  background: #1a1b1e; 
+  border: 1px solid #2a2b30; 
+  padding: 16px; 
+  border-radius: 12px; 
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+}
+
+/* 🔹 Formularios */
+form input, 
+form button, 
+form label { 
+  display: block; 
+  width: 100%; 
+  margin-bottom: 10px; 
+}
+
+input { 
+  padding: 10px; 
+  border-radius: 8px; 
+  border: 1px solid #2a2b30; 
+  background: #111216; 
+  color: #fff; 
+}
+
+button { 
+  padding: 10px 14px; 
+  border: 0; 
+  border-radius: 10px; 
+  background: #3a86ff; 
+  color: #fff; 
+  cursor: pointer; 
+  transition: 0.2s;
+}
+button:hover { background: #559dff; }
 button.danger { background: #ef476f; }
-.row { display: flex; align-items: center; gap: 8px; }
-hr { border: 0; height: 1px; background: #2a2b30; margin: 20px 0; }
+button.danger:hover { background: #ff5f82; }
+
+/* 🔹 Layout para crear/eliminar */
+.forms-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* izquierda más ancha, derecha más angosta */
+  gap: 20px;
+  margin-bottom: 20px;
+  align-items: start;
+}
+
+/* 🔹 Lista de productos */
+.list { 
+  list-style: none; 
+  padding: 0; 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px; 
+}
+
+.list li {
+  list-style: none;
+}
+
+/* 🔹 Helpers */
+.row { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+}
+
+hr { 
+  border: 0; 
+  height: 1px; 
+  background: #2a2b30; 
+  margin: 20px 0; 
+}
+
+/* Corrección para inputs que sobresalen */
+.card input,
+.card select,
+.card textarea {
+  width: 100%;
+  box-sizing: border-box; /* evita que el padding rompa el ancho */
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #1a1b1e; /* mismo estilo que las cards */
+  color: #dcdcdc;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 14px;
+  border-top: 1px solid #2a2b30;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.footer b {
+  color: #fff;
+}
+
+.footer::before {
+  content: "© ";
+  color: #8ecbff;
+}

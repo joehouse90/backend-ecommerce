@@ -1,8 +1,14 @@
 {{!< layouts/main}}
 
-<section>
-  <h2>Listado de productos (estático)</h2>
+<section class="container">
+  <h1 class="text-center mb-4">👋 Bienvenido a <span style="color:#3a86ff;">mi tienda online</span></h1>
+  <p class="text-center mb-5">Explorá nuestros productos disponibles y encontrá lo que necesitás 🛒</p>
 
+  <div class="text-center mb-5">
+    <a href="/realtimeproducts" class="btn btn-primary">⚡ Ver productos en tiempo real</a>
+  </div>
+
+  <h2 class="mb-3">✨ Listado de productos</h2>
   <ul id="productsList" class="list">
     {{#each products}}
       <li class="card" data-id="{{this.id}}">
@@ -16,4 +22,3 @@
   </ul>
 </section>
 
-</section>

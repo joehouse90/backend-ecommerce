@@ -1,77 +1,113 @@
-# Backend Ecommerce - Entrega Nº2
+# 🚀 Proyecto E-commerce Backend - Entrega Final
 
-Proyecto desarrollado como parte del curso **Backend (Coderhouse)**.  
-Esta entrega implementa un servidor con **Express**, **Handlebars** y **WebSockets** para gestionar productos en tiempo real.
-
----
-
-## 🚀 Características
-- Servidor con **Express** y **Nodemon**.
-- Motor de plantillas **Handlebars** para vistas dinámicas.
-- Persistencia de productos en archivo `data/products.json`.
-- Vista **Home** (`/`) que muestra la lista de productos cargados.
-- Vista **RealTimeProducts** (`/realtimeproducts`) que permite:
-  - Crear nuevos productos en vivo.
-  - Eliminar productos en vivo.
-- Actualización automática de la lista gracias a **Socket.IO**.
-- Carpeta `public/` para archivos estáticos (CSS y JS).
-- Visualización inmediata de productos recién creados en la vista realtime.
+Este proyecto es la **Entrega Final del curso de Backend en Coderhouse**.  
+Se trata de un servidor desarrollado en **Node.js + Express + MongoDB** que gestiona productos y carritos, con vistas dinámicas en **Handlebars** y actualización en tiempo real mediante **WebSockets (Socket.IO)**.
 
 ---
 
-## 📂 Estructura del proyecto
-```plaintext
-backend-ecommerce/
-├── data/
-│   └── products.json
-├── src/
-│   ├── managers/              # Lógica de acceso a datos (ProductManagerFS)
-│   ├── public/                # Archivos estáticos (css, js)
-│   │   ├── css/
-│   │   └── js/realtime.js
-│   ├── routes/                # Routers (products, carts, views)
-│   ├── views/                 # Vistas Handlebars
-│   │   ├── layouts/main.handlebars
-│   │   ├── home.handlebars
-│   │   └── realTimeProducts.handlebars
-│   └── app.js                 # Configuración principal del servidor
-├── package.json
-└── README.md
-
-
+## 📌 Objetivos
+- Implementar **persistencia con MongoDB + Mongoose**.  
+- Construir **endpoints RESTful** para productos y carritos.  
+- Desarrollar vistas con **Handlebars** para la interacción del usuario.  
+- Integrar **WebSockets** para la gestión en tiempo real de productos.  
 
 ---
 
-## ⚙️ Instalación
-1. Clonar el repositorio o descargarlo en tu PC.
+## ⚙️ Tecnologías utilizadas
+- Node.js + Express  
+- MongoDB + Mongoose  
+- Handlebars  
+- Socket.IO  
+- Dotenv  
+- Nodemon  
+
+---
+
+## 🚦 Instalación y ejecución
+
+1. Clonar este repositorio:
+   git clone https://github.com/tuusuario/backend-ecommerce.git
+   cd backend-ecommerce
+
 2. Instalar dependencias:
    npm install
-3. Levantar el servidor en modo desarrollo:
+
+3. Configurar variables de entorno en un archivo `.env`:
+   MONGO_URI=mongodb+srv://<tu-cluster>
+   PORT=8080
+
+4. Ejecutar el servidor:
    npm run dev
 
----
-
-## 🌐 Rutas disponibles
-- `/` → Vista **Home** con la lista de productos.
-- `/realtimeproducts` → Vista con productos en tiempo real (crear/eliminar).
-- `/api/products` → API REST para productos (**GET, POST, DELETE**).
-- `/api/carts` → API REST básica de carritos.
+Servidor corriendo en:  
+👉 http://localhost:8080
 
 ---
 
-## ✅ Requisitos cumplidos (Entrega 2)
-- Implementación de **Express** y **Vistas**.
-- Configuración de **WebSockets (Socket.IO)**.
-- Vista `home.handlebars` con lista estática de productos.
-- Vista `realTimeProducts.handlebars` con lista dinámica.
-- Formularios para crear y eliminar productos.
-- Actualización automática sin recargar página.
-- Persistencia de productos en archivo **JSON**.
+## 🛒 Endpoints principales
+
+### Productos (/api/products)
+- **GET /** → lista de productos con paginación, filtros y orden:  
+  /api/products?limit=10&page=1&sort=asc&query=categoria  
+- **GET /:pid** → producto por ID.  
+- **POST /** → crear producto.  
+- **PUT /:pid** → actualizar producto.  
+- **DELETE /:pid** → eliminar producto.  
+
+📌 Respuesta con formato:
+{
+  "status": "success",
+  "payload": [],
+  "totalPages": 0,
+  "prevPage": 0,
+  "nextPage": 0,
+  "page": 0,
+  "hasPrevPage": true,
+  "hasNextPage": true,
+  "prevLink": null,
+  "nextLink": null
+}
+
+---
+
+### Carritos (/api/carts)
+- **POST /** → crea un carrito vacío.  
+- **GET /:cid** → obtiene productos del carrito con populate.  
+- **POST /:cid/product/:pid** → agrega producto (si existe, aumenta quantity).  
+- **PUT /:cid** → reemplaza todo el carrito con un nuevo array.  
+- **PUT /:cid/products/:pid** → actualiza cantidad de un producto.  
+- **DELETE /:cid/products/:pid** → elimina un producto específico.  
+- **DELETE /:cid** → vacía el carrito completo.  
+
+---
+
+## 🖼️ Vistas con Handlebars
+- **/** (Home) → Bienvenida + listado estático de productos + acceso a productos en tiempo real.  
+- **/products** → Lista paginada de productos con botón para agregar al carrito.  
+- **/products/:pid** → Detalle de un producto con opción de agregar al carrito.  
+- **/carts/:cid** → Vista de carrito con productos poblados, subtotales, total y opciones para vaciar o eliminar.  
+- **/realtimeproducts** → Panel dinámico de administración de productos con Socket.IO.  
+
+---
+
+## ⚡ Funcionalidades en tiempo real
+- Crear productos desde el formulario en /realtimeproducts.  
+- Eliminar productos desde el panel.  
+- La lista se actualiza automáticamente sin recargar la página.  
+
+---
+
+## 📷 Capturas recomendadas
+Incluí imágenes de:  
+1. Vista Home con bienvenida.  
+2. Vista Products con paginación.  
+3. Vista Product Detail.  
+4. Vista Cart Detail con subtotales.  
+5. Vista RealTimeProducts mostrando creación/eliminación.  
 
 ---
 
 ## 👨‍💻 Autor
-Joel Simoes Daniel
-
-
+**Joel Simoes Daniel**  
+Entrega Final - Curso de Backend en Coderhouse 🚀  
 

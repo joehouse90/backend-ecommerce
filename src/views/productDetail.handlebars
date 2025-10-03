@@ -1,0 +1,27 @@
+<h1>{{title}}</h1>
+
+<div style="border:1px solid #ccc; padding:20px; margin:20px;">
+  <h2>{{product.title}}</h2>
+  <p><b>Descripción:</b> {{product.description}}</p>
+  <p><b>Categoría:</b> {{product.category}}</p>
+  <p><b>Precio:</b> ${{product.price}}</p>
+  <p><b>Stock:</b> {{product.stock}}</p>
+  <button onclick="addToCart('{{product._id}}')">Agregar al carrito</button>
+</div>
+
+<a href="/products">⬅️ Volver a productos</a>
+
+<script>
+  async function addToCart(pid) {
+    const cid = "68dd1c04376d3158b7e9fed2"; // ⚠️ tu carrito válido
+    const res = await fetch(`/api/carts/${cid}/products/${pid}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ quantity: 1 })
+    });
+    const data = await res.json();
+    console.log("Carrito actualizado:", data);
+    alert("Producto agregado al carrito!");
+  }
+</script>
+

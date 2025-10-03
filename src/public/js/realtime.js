@@ -1,7 +1,7 @@
 // Cliente Socket.IO
 const socket = io();
 
-// 🔄 Función para renderizar la lista en el DOM
+// 🔄 Renderizar productos en el DOM
 function renderProducts(list) {
   const ul = document.getElementById("productsList");
   if (!ul) return;
@@ -9,14 +9,14 @@ function renderProducts(list) {
   ul.innerHTML = "";
   list.forEach((p) => {
     const li = document.createElement("li");
-    li.className = "card";
-    li.setAttribute("data-id", p.id);
+    li.className = "card p-2 mb-2";
+    li.setAttribute("data-id", p._id);
     li.innerHTML = `
       <b>${p.title}</b>
       <div>Precio: $${p.price}</div>
       <div>Categoría: ${p.category}</div>
       <div>Stock: ${p.stock}</div>
-      <small>ID: ${p.id} · Code: ${p.code}</small>
+      <small>ID: ${p._id} · Code: ${p.code}</small>
     `;
     ul.appendChild(li);
   });
@@ -27,10 +27,10 @@ socket.on("products:updated", (products) => {
   renderProducts(products);
 });
 
-// 🟢 Manejo del formulario CREAR
+// 🟢 Crear producto (con socket.emit)
 const formCreate = document.getElementById("formCreate");
 if (formCreate) {
-  formCreate.addEventListener("submit", async (e) => {
+  formCreate.addEventListener("submit", (e) => {
     e.preventDefault();
     const fd = new FormData(formCreate);
     const body = {
@@ -47,40 +47,25 @@ if (formCreate) {
       status: fd.get("status") === "on"
     };
 
-    try {
-      const res = await fetch("/api/products", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
-      });
-      const data = await res.json();
-      document.getElementById("createMsg").textContent = data.message || "Producto creado!";
-      formCreate.reset();
-    } catch (err) {
-      console.error("Error creando producto:", err);
-    }
+    socket.emit("addProduct", body);
+    document.getElementById("createMsg").textContent = "✅ Producto creado en tiempo real";
+    formCreate.reset();
   });
 }
 
-// 🔴 Manejo del formulario ELIMINAR
+// 🔴 Eliminar producto (con socket.emit)
 const formDelete = document.getElementById("formDelete");
 if (formDelete) {
-  formDelete.addEventListener("submit", async (e) => {
+  formDelete.addEventListener("submit", (e) => {
     e.preventDefault();
     const fd = new FormData(formDelete);
     const pid = fd.get("pid");
 
-    try {
-      const res = await fetch(`/api/products/${pid}`, {
-        method: "DELETE"
-      });
-      const data = await res.json();
-      document.getElementById("deleteMsg").textContent = data.message || "Producto eliminado!";
-      formDelete.reset();
-    } catch (err) {
-      console.error("Error eliminando producto:", err);
-    }
+    socket.emit("deleteProduct", pid);
+    document.getElementById("deleteMsg").textContent = "❌ Producto eliminado en tiempo real";
+    formDelete.reset();
   });
 }
+
 
 
