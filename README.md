@@ -97,13 +97,6 @@ Servidor corriendo en:
 
 ---
 
-## 📷 Capturas recomendadas
-Incluí imágenes de:  
-1. Vista Home con bienvenida.  
-2. Vista Products con paginación.  
-3. Vista Product Detail.  
-4. Vista Cart Detail con subtotales.  
-5. Vista RealTimeProducts mostrando creación/eliminación.  
 
 ---
 
