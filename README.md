@@ -26,7 +26,7 @@ Se trata de un servidor desarrollado en **Node.js + Express + MongoDB** que gest
 ## 🚦 Instalación y ejecución
 
 1. Clonar este repositorio:
-   git clone https://github.com/tuusuario/backend-ecommerce.git
+   git clone https://github.com/joehouse90/backend-ecommerce
    cd backend-ecommerce
 
 2. Instalar dependencias:
